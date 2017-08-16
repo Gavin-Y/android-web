@@ -9,6 +9,7 @@ import android.view.KeyEvent;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import com.gavin.alw.Interface.WebAppInterface;
 
 import static android.view.KeyEvent.KEYCODE_BACK;
 
@@ -23,7 +24,9 @@ public class NowActivity extends Activity{
 
         webView = (WebView) findViewById(R.id.web);
 
-        webView.loadUrl("http://115.28.216.244/html/Hacker.html");
+        webView.loadUrl("file:///android_asset/index.html");
+
+        webView.addJavascriptInterface(new WebAppInterface(this),"Android");
 
         //设置不用系统浏览器打开,直接显示在当前Webview
         webView.setWebViewClient(new WebViewClient() {
