@@ -9,6 +9,9 @@ import com.gavin.alw.utils.WebApp.mWebView;
 
 import static android.view.KeyEvent.KEYCODE_BACK;
 
+/**
+ * Create by Gavin_Y on 2017/8/16
+ */
 public class NowActivity extends Activity{
 
     private mWebView mWebView;

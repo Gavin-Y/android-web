@@ -6,6 +6,9 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+/**
+ * Create by Gavin_Y on 2017/8/16
+ */
 public class mWebView extends WebView{
 
     private WebSettings webSettings;
