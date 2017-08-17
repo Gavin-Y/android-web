@@ -1,4 +1,4 @@
-package com.gavin.alw.utils.WebApp;
+package com.gavin.alw.utils;
 
 import android.content.Context;
 import android.webkit.WebChromeClient;
