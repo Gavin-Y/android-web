@@ -35,7 +35,6 @@ public class NowActivity extends Activity{
         setHandler();
     }
 
-
     private void setHandler(){
         mHndle = new mHandler(){
             @Override
