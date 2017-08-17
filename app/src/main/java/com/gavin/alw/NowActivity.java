@@ -34,7 +34,6 @@ public class NowActivity extends Activity{
         all.addView(mWebView);
         setHandler();
     }
-
     private void setHandler(){
         mHndle = new mHandler(){
             @Override
