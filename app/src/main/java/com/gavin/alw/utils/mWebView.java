@@ -64,7 +64,7 @@ public class mWebView extends WebView{
 
 
 //        离线模式
-        if (NetworkUtils.isConnected(getInstance())) {
+        if (NetworkUtils.isConnected(context)) {
             webSettings.setCacheMode(WebSettings.LOAD_DEFAULT);//根据cache-control决定是否从网络上取数据。
         } else {
             webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);//没网，则从本地获取，即离线加载
