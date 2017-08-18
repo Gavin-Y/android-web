@@ -67,13 +67,13 @@ public class mWebView extends WebView{
                 view.loadUrl("javascript:document.getElementById('tlbstoolbar').remove();");
                 super.onProgressChanged(view, newProgress);
             }
-            @Override
-            public void onReceivedTitle(WebView view, String title) {
-                super.onReceivedTitle(view, title);
-                Message msg = new Message();
-                msg.obj = title;
-                titleHandler.sendMessage(msg);
-            }
+//            @Override
+//            public void onReceivedTitle(WebView view, String title) {
+//                super.onReceivedTitle(view, title);
+//                Message msg = new Message();
+//                msg.obj = title;
+//                titleHandler.sendMessage(msg);
+//            }
         });
 
 

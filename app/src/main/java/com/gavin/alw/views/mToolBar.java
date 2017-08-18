@@ -9,6 +9,7 @@ import android.util.AttributeSet;
  * Create by Gavin_Y on 2017/8/18
  */
 public class mToolBar extends Toolbar{
+
     public mToolBar(Context context) {
         super(context);
     }

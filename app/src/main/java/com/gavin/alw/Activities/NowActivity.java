@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.widget.LinearLayout;
 import com.gavin.alw.R;
+import com.gavin.alw.config.WebConfig;
 import com.gavin.alw.utils.*;
 import com.gavin.alw.views.*;
 
@@ -32,7 +33,7 @@ public class NowActivity extends AppCompatActivity {
         mTB = (mToolBar)findViewById(R.id.toolbar);
 
         mWV = new mWebView(this);
-        mWV.loadUrl("file:///android_asset/index.html");
+        mWV.loadUrl(WebConfig.getUrl());
         all.addView(mWV);
 
         titleHandler = new Handler(){
@@ -43,6 +44,7 @@ public class NowActivity extends AppCompatActivity {
             }
         };
 
+        mTB.setTitle("");
         mTB.setTitleTextColor(Color.WHITE);
         setSupportActionBar(mTB);
     }

@@ -7,16 +7,13 @@
 <body>
 <h1>测试</h1>
 <button style="width: 100px;height: 100px;font-size: 30px" onClick="showAlert()">测试</button>
-<button style="width: 100px;height: 100px;font-size: 30px" onClick="jump()">跳转</button>
-<button style="width: 100px;height: 100px;font-size: 30px">
-    <a href="test.html">test</a>
-</button>
+<button style="width: 100px;height: 100px;font-size: 30px" onClick="jump(1)">跳转</button>
 <script type="text/javascript">
     function showAlert() {
         BHouse.showAlert();
     }
-    function jump() {
-        BHouse.jump();
+    function jump(url) {
+        BHouse.jump(url);
     }
 </script>
 </body>

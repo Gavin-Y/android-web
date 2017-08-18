@@ -7,6 +7,7 @@ import android.os.Message;
 import android.widget.Toast;
 import com.bigkoo.alertview.AlertView;
 import com.bigkoo.alertview.OnItemClickListener;
+import com.gavin.alw.config.WebConfig;
 
 /**
  * Create by Gavin_Y on 2017/8/17
@@ -43,7 +44,7 @@ public class mHandler extends android.os.Handler{
         switch (msg.arg1){
             case SHOW_TOAST:showToast(msg.obj.toString());break;
             case SHOW_ALERT:showAlert();break;
-            case JUMP:jump(msg.obj);break;
+            case JUMP:jump(msg.arg2,msg.obj);break;
         }
     }
 
@@ -64,7 +65,8 @@ public class mHandler extends android.os.Handler{
         }).show();
     }
 
-    private void jump(Object clas){
+    private void jump(int url,Object clas){
+        WebConfig.tag = url;
         Intent intent = new Intent();
         intent.setClass(mContext,(Class) clas);
         mContext.startActivity(intent);
