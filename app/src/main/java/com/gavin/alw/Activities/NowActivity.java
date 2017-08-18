@@ -1,4 +1,4 @@
-package com.gavin.alw;
+package com.gavin.alw.Activities;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import android.view.KeyEvent;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.bigkoo.alertview.AlertView;
-import com.gavin.alw.utils.mWebView;
+import com.gavin.alw.R;
 import com.gavin.alw.utils.*;
 
 import static android.view.KeyEvent.KEYCODE_BACK;
