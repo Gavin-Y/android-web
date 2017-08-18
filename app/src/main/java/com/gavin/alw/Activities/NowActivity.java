@@ -1,12 +1,16 @@
 package com.gavin.alw.Activities;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.widget.LinearLayout;
 import com.gavin.alw.R;
 import com.gavin.alw.utils.*;
+import com.gavin.alw.views.*;
 
 import static android.view.KeyEvent.KEYCODE_BACK;
 
@@ -15,17 +19,32 @@ import static android.view.KeyEvent.KEYCODE_BACK;
  */
 public class NowActivity extends AppCompatActivity {
 
-    private mWebView mWebView;
+    private com.gavin.alw.views.mWebView mWV;
     private LinearLayout all;
+    private mToolBar mTB;
+    public static Handler titleHandler;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_now);
         all = (LinearLayout)findViewById(R.id.all);
-        mWebView = new mWebView(this);
-        mWebView.loadUrl("file:///android_asset/index.html");
-        all.addView(mWebView);
+        mTB = (mToolBar)findViewById(R.id.toolbar);
+
+        mWV = new mWebView(this);
+        mWV.loadUrl("file:///android_asset/index.html");
+        all.addView(mWV);
+
+        titleHandler = new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                mTB.setTitle(mWV.getTitle());
+            }
+        };
+
+        mTB.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(mTB);
     }
 
     @Override
@@ -35,8 +54,8 @@ public class NowActivity extends AppCompatActivity {
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if ((keyCode == KEYCODE_BACK) && mWebView.canGoBack()) {
-            mWebView.goBack();
+        if ((keyCode == KEYCODE_BACK) && mWV.canGoBack()) {
+            mWV.goBack();
             return true;
         }
         return super.onKeyDown(keyCode, event);

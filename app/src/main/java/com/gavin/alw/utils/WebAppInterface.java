@@ -13,7 +13,7 @@ import static com.gavin.alw.utils.mHandler.*;
 public class WebAppInterface {
     private Context mContext;
     /** Instantiate the interface and set the context */
-    WebAppInterface(Context c) {
+    public WebAppInterface(Context c) {
         mContext = c;
     }
     /** Show a toast from the web page */

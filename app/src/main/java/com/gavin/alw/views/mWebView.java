@@ -1,11 +1,15 @@
-package com.gavin.alw.utils;
+package com.gavin.alw.views;
 
 import android.content.Context;
+import android.os.Message;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import com.gavin.alw.utils.NetworkUtils;
+import com.gavin.alw.utils.WebAppInterface;
 
+import static com.gavin.alw.Activities.NowActivity.titleHandler;
 import static com.gavin.alw.utils.ContextUtil.getInstance;
 
 /**
@@ -60,6 +64,13 @@ public class mWebView extends WebView{
                 view.loadUrl("javascript:document.getElementById('tlbstoolbar').remove();");
                 super.onProgressChanged(view, newProgress);
             }
+            @Override
+            public void onReceivedTitle(WebView view, String title) {
+                super.onReceivedTitle(view, title);
+                Message msg = new Message();
+                msg.obj = title;
+                titleHandler.sendMessage(msg);
+            }
         });
 
 
@@ -83,4 +94,5 @@ public class mWebView extends WebView{
         webSettings.setJavaScriptEnabled(true);
         this.addJavascriptInterface(new WebAppInterface(context),"BHouse");
     }
+
 }

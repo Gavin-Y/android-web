@@ -3,4 +3,10 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent" android:id="@+id/all">
+    <com.gavin.alw.views.mToolBar
+            android:id="@+id/toolbar"
+            android:background="?attr/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+    </com.gavin.alw.views.mToolBar>
 </LinearLayout>
