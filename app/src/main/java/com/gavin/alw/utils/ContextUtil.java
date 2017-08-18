@@ -15,6 +15,7 @@ public class ContextUtil extends Application{
     @Override
     public void onCreate() {
         super.onCreate();
+        System.out.println("start");
         instance = this;
     }
 }

@@ -3,8 +3,8 @@ package com.gavin.alw.utils;
 import android.content.Context;
 import android.os.Message;
 import android.webkit.JavascriptInterface;
+import com.gavin.alw.Activities.MainActivity;
 
-import static com.gavin.alw.Activities.NowActivity.mHndle;
 import static com.gavin.alw.utils.mHandler.*;
 
 /**
@@ -22,13 +22,21 @@ public class WebAppInterface {
         Message msg = new Message();
         msg.arg1 = SHOW_TOAST;
         msg.obj = toast;
-        mHndle.sendMessage(msg);
+        mHandler.getInstance(mContext).sendMessage(msg);
     }
 
     @JavascriptInterface
     public void showAlert() {
         Message msg = new Message();
         msg.arg1 = SHOW_ALERT;
-        mHndle.sendMessage(msg);
+        mHandler.getInstance(mContext).sendMessage(msg);
+    }
+
+    @JavascriptInterface
+    public void jump(){
+        Message msg = new Message();
+        msg.arg1 = JUMP;
+        msg.obj = MainActivity.class;
+        mHandler.getInstance(mContext).sendMessage(msg);
     }
 }
