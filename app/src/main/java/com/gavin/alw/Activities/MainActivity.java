@@ -23,9 +23,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Message msg = new Message();
+                msg.what = 2;
                 msg.arg1 = 1;
+                msg.arg2 = 1;
                 mHandler.setContext(MainActivity.this).sendMessage(msg);
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        mHandler.setContext(this);
+        super.onStart();
     }
 }

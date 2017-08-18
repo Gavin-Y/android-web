@@ -33,7 +33,7 @@ public class NowActivity extends AppCompatActivity {
         mTB = (mToolBar)findViewById(R.id.toolbar);
 
         mWV = new mWebView(this);
-        mWV.loadUrl(WebConfig.getUrl());
+        mWV.loadUrl(WebConfig.url);
         all.addView(mWV);
 
         titleHandler = new Handler(){
@@ -53,13 +53,5 @@ public class NowActivity extends AppCompatActivity {
     protected void onStart() {
         mHandler.setContext(this);
         super.onStart();
-    }
-
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if ((keyCode == KEYCODE_BACK) && mWV.canGoBack()) {
-            mWV.goBack();
-            return true;
-        }
-        return super.onKeyDown(keyCode, event);
     }
 }

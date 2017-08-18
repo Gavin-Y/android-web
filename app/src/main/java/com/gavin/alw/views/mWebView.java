@@ -2,12 +2,15 @@ package com.gavin.alw.views;
 
 import android.content.Context;
 import android.os.Message;
+import android.util.Log;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import com.gavin.alw.config.WebConfig;
 import com.gavin.alw.utils.NetworkUtils;
 import com.gavin.alw.utils.WebAppInterface;
+
 
 import static com.gavin.alw.Activities.NowActivity.titleHandler;
 import static com.gavin.alw.utils.ContextUtil.getInstance;
@@ -22,6 +25,12 @@ public class mWebView extends WebView{
     public mWebView(Context context) {
         super(context);
         setView(context);
+    }
+
+    @Override
+    public void goBack() {
+        WebConfig.pop();
+        super.goBack();
     }
 
     private void setView(Context context){
@@ -54,6 +63,7 @@ public class mWebView extends WebView{
                 Message msg = new Message();
                 msg.obj = view.getTitle();
                 titleHandler.sendMessage(msg);
+                WebConfig.push(url);
             }
         });
 

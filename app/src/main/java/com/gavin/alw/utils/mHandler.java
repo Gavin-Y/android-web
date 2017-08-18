@@ -4,9 +4,11 @@ package com.gavin.alw.utils;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Message;
+import android.util.Log;
 import android.widget.Toast;
 import com.bigkoo.alertview.AlertView;
 import com.bigkoo.alertview.OnItemClickListener;
+import com.gavin.alw.config.ActConfig;
 import com.gavin.alw.config.WebConfig;
 
 /**
@@ -41,10 +43,10 @@ public class mHandler extends android.os.Handler{
     @Override
     public void handleMessage(Message msg) {
         super.handleMessage(msg);
-        switch (msg.arg1){
+        switch (msg.what){
             case SHOW_TOAST:showToast(msg.obj.toString());break;
             case SHOW_ALERT:showAlert();break;
-            case JUMP:jump(msg.arg2,msg.obj);break;
+            case JUMP:jump(msg.arg1,msg.arg2);break;
         }
     }
 
@@ -65,10 +67,11 @@ public class mHandler extends android.os.Handler{
         }).show();
     }
 
-    private void jump(int url,Object clas){
-        WebConfig.tag = url;
+    private void jump(int url,int clas){
+        WebConfig.url = WebConfig.URL_LIST[url];
+        Log.i("Gavin",WebConfig.url);
         Intent intent = new Intent();
-        intent.setClass(mContext,(Class) clas);
+        intent.setClass(mContext, ActConfig.CLASS_LIST[clas]);
         mContext.startActivity(intent);
     }
 }

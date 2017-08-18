@@ -6,6 +6,7 @@ import android.webkit.JavascriptInterface;
 import com.gavin.alw.Activities.MainActivity;
 import com.gavin.alw.Activities.NowActivity;
 import com.gavin.alw.config.ActConfig;
+import com.gavin.alw.config.WebConfig;
 
 import static com.gavin.alw.utils.mHandler.*;
 
@@ -22,7 +23,7 @@ public class WebAppInterface {
     @JavascriptInterface
     public void showToast(String toast) {
         Message msg = new Message();
-        msg.arg1 = SHOW_TOAST;
+        msg.what = SHOW_TOAST;
         msg.obj = toast;
         mHandler.getInstance(mContext).sendMessage(msg);
     }
@@ -30,16 +31,17 @@ public class WebAppInterface {
     @JavascriptInterface
     public void showAlert() {
         Message msg = new Message();
-        msg.arg1 = SHOW_ALERT;
+        msg.what = SHOW_ALERT;
         mHandler.getInstance(mContext).sendMessage(msg);
     }
 
     @JavascriptInterface
     public void jump(int url,int act){
         Message msg = new Message();
-        msg.arg1 = JUMP;
-        msg.arg2 = url;
-        msg.obj = ActConfig.CLASS_LIST[act];
+        msg.what = JUMP;
+        msg.arg1 = url;
+        msg.arg2 = act;
+
         mHandler.getInstance(mContext).sendMessage(msg);
     }
 }
