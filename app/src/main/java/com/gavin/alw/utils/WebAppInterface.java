@@ -5,6 +5,7 @@ import android.os.Message;
 import android.webkit.JavascriptInterface;
 import com.gavin.alw.Activities.MainActivity;
 import com.gavin.alw.Activities.NowActivity;
+import com.gavin.alw.config.ActConfig;
 
 import static com.gavin.alw.utils.mHandler.*;
 
@@ -34,11 +35,11 @@ public class WebAppInterface {
     }
 
     @JavascriptInterface
-    public void jump(int url){
+    public void jump(int url,int act){
         Message msg = new Message();
         msg.arg1 = JUMP;
         msg.arg2 = url;
-        msg.obj = NowActivity.class;
+        msg.obj = ActConfig.CLASS_LIST[act];
         mHandler.getInstance(mContext).sendMessage(msg);
     }
 }
