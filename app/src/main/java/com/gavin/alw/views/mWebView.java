@@ -43,15 +43,18 @@ public class mWebView extends WebView{
                 view.loadUrl(url);
                 return true;
             }
-//            @Override
-//            public void onPageFinished(WebView view, String url) {
+            @Override
+            public void onPageFinished(WebView view, String url) {
 //                //去除流量状态下运营商图标
 //                view.loadUrl("javascript:document.getElementById('statusholder').remove();");
 //                view.loadUrl("javascript:document.getElementById('progresstextholder').remove();");
 //                view.loadUrl("javascript:document.getElementById('ftsiappholder').remove();");
 //                view.loadUrl("javascript:document.getElementById('tlbstoolbar').remove();");
-//                super.onPageFinished(view, url);
-//            }
+                super.onPageFinished(view, url);
+                Message msg = new Message();
+                msg.obj = view.getTitle();
+                titleHandler.sendMessage(msg);
+            }
         });
 
         this.setWebChromeClient(new WebChromeClient(){
