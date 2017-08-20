@@ -15,24 +15,19 @@ public class WebConfig {
             "file:///android_asset/test.html"
     };
 
-    public static Stack<String> urlStack = new Stack<>();
-
-    public static String url = URL_LIST[0];
-
-    public static void setUrl(String url) {
-        WebConfig.url = url;
-    }
+    private static Stack<String> urlStack = new Stack<>();
 
     public static void push(String item){
         urlStack.push(item);
+        Log.i("Gavin",getUrl());
     }
 
     public static void pop(){
-        urlStack.peek();
-        url = urlStack.pop();
+        urlStack.pop();
+        Log.i("Gavin",getUrl());
     }
 
-    public static String getUrl(int i){
-        return URL_LIST[i];
+    public static String getUrl(){
+        return urlStack.peek();
     }
 }

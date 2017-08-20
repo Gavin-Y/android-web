@@ -10,6 +10,7 @@ import com.bigkoo.alertview.AlertView;
 import com.bigkoo.alertview.OnItemClickListener;
 import com.gavin.alw.config.ActConfig;
 import com.gavin.alw.config.WebConfig;
+import com.gavin.alw.views.mWebView;
 
 /**
  * Create by Gavin_Y on 2017/8/17
@@ -60,16 +61,33 @@ public class mHandler extends android.os.Handler{
                 AlertView.Style.ActionSheet, new OnItemClickListener() {
             @Override
             public void onItemClick(Object o, int position) {
+                String url;
                 switch (position){
                     case 0:
+                        url = "javascript:alt('查找关键字')";
+                        mWebView.getInstance(mContext).loadUrl(url);
+                        break;
+                    case 1:
+                        url = "javascript:alt('最新评论')";
+                        mWebView.getInstance(mContext).loadUrl(url);
+                        break;
+                    case 2:
+                        url = "javascript:alt('按评分从高到低')";
+                        mWebView.getInstance(mContext).loadUrl(url);
+                        break;
+                    case -1:
+                        url = "javascript:alt('取消')";
+                        mWebView.getInstance(mContext).loadUrl(url);
+                        break;
                 }
             }
         }).show();
     }
 
     private void jump(int url,int clas){
-        WebConfig.url = WebConfig.URL_LIST[url];
-        Log.i("Gavin",WebConfig.url);
+        if (url!=-1) {
+            WebConfig.push(WebConfig.URL_LIST[url]);
+        }
         Intent intent = new Intent();
         intent.setClass(mContext, ActConfig.CLASS_LIST[clas]);
         mContext.startActivity(intent);

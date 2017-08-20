@@ -1,6 +1,9 @@
 package com.gavin.alw.utils;
 
 import android.app.Application;
+import com.gavin.alw.config.WebConfig;
+
+import static com.gavin.alw.config.WebConfig.URL_LIST;
 
 /**
  * Create by Gavin_Y on 2017/8/16
@@ -15,7 +18,7 @@ public class ContextUtil extends Application{
     @Override
     public void onCreate() {
         super.onCreate();
-        System.out.println("start");
+        WebConfig.push(URL_LIST[0]);
         instance = this;
     }
 }
