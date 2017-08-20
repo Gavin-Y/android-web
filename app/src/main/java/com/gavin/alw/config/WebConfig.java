@@ -23,11 +23,16 @@ public class WebConfig {
     }
 
     public static void pop(){
+        if (urlStack.empty())return;
         urlStack.pop();
         Log.i("Gavin",getUrl());
     }
 
     public static String getUrl(){
-        return urlStack.peek();
+        if(!urlStack.empty()) {
+            return urlStack.peek();
+        }else {
+            return URL_LIST[0];
+        }
     }
 }
