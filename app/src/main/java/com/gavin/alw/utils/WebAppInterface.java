@@ -15,11 +15,11 @@ import static com.gavin.alw.utils.mHandler.*;
  */
 public class WebAppInterface {
     private Context mContext;
-    /** Instantiate the interface and set the context */
+    /** 实例化接口并设置上下文 */
     public WebAppInterface(Context c) {
         mContext = c;
     }
-    /** Show a toast from the web page */
+
     @JavascriptInterface
     public void showToast(String toast) {
         Message msg = new Message();
